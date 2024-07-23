@@ -8,6 +8,19 @@ function LinkedList() {
     // Get the entire list
     const getList = () => list;
 
+    // Convert the linked list to an array for easy display
+    const toArray = () => {
+        const results = [];
+        let current = list.head;
+
+        while (current !== null) {
+            results.push(current.value);
+            current = current.nextNode;
+        }
+
+        return results;
+    };
+
     // Append a new node at the end of the list
     const append = (value) => {
         const newNode = Node(value);
@@ -29,6 +42,7 @@ function LinkedList() {
 
     return {
         getList,
+        toArray,
         append,
         prepend
     };
@@ -42,10 +56,18 @@ function Node(value = null, nextNode = null) {
     };
 }
 
-const list = LinkedList();
-list.append('Dog');
-list.append('Cat');
-list.append('Duck');
-list.prepend('Chicken');
-list.prepend('Horse');
-console.log(list.getList());
+// Instance of LinkedList
+const myList = LinkedList();
+
+// Adds to the ends of the list
+myList.append('Dog');
+myList.append('Cat');
+myList.append('Duck');
+
+// Adds to the start of the list
+myList.prepend('Chicken');
+myList.prepend('Horse');
+
+// Print list
+console.log(myList.getList());
+console.log(myList.toArray());
