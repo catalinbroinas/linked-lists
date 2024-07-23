@@ -40,11 +40,25 @@ function LinkedList() {
         list.head = newNode;
     };
 
+    // Get the total number of nodes in the list
+    const size = () => {
+        let current = list.head;
+        let size = 0;
+
+        while (current !== null) {
+            size += 1;
+            current = current.nextNode;
+        }
+
+        return size;
+    };
+
     return {
         getList,
         toArray,
         append,
-        prepend
+        prepend,
+        size
     };
 }
 
@@ -71,3 +85,7 @@ myList.prepend('Horse');
 // Print list
 console.log(myList.getList());
 console.log(myList.toArray());
+
+// Prints the size of the list
+const sizeMyList = myList.size();
+console.log(`Size list is ${sizeMyList}`);
