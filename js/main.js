@@ -53,12 +53,16 @@ function LinkedList() {
         return size;
     };
 
+    // Get the first node in the list
+    const head = () => list.head ? list.head.value : null;
+
     return {
         getList,
         toArray,
         append,
         prepend,
-        size
+        size,
+        head
     };
 }
 
@@ -89,3 +93,7 @@ console.log(myList.toArray());
 // Prints the size of the list
 const sizeMyList = myList.size();
 console.log(`Size list is ${sizeMyList}`);
+
+// Print the fist node of the list
+const firstNode = myList.head();
+console.log(`First node is ${firstNode}`);
