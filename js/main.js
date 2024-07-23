@@ -8,7 +8,21 @@ function LinkedList() {
     // Get the entire list
     const getList = () => list;
 
-    return { getList }
+    // Append a new node at the end of the list
+    const append = (value) => {
+        const newNode = Node(value);
+        if (list.head === null) {
+            list.head = newNode;
+        } else {
+            let current = list.head;
+            while (current.nextNode !== null) {
+                current = current.nextNode;
+            }
+            current.nextNode = newNode;
+        }
+    };
+
+    return { getList, append }
 }
 
 // Create a node
