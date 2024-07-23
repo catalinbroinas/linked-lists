@@ -24,17 +24,21 @@ function LinkedList() {
     // Append a new node at the end of the list
     const append = (value) => {
         const newNode = Node(value);
+
         if (list.head === null) {
             list.head = newNode;
         } else {
             let current = list.head;
+
             while (current.nextNode !== null) {
                 current = current.nextNode;
             }
+
             current.nextNode = newNode;
         }
     };
 
+    // Prepend a new node at the beginning of the list
     const prepend = (value) => {
         const newNode = Node(value, list.head);
         list.head = newNode;
