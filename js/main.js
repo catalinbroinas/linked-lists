@@ -22,7 +22,16 @@ function LinkedList() {
         }
     };
 
-    return { getList, append }
+    const prepend = (value) => {
+        const newNode = Node(value, list.head);
+        list.head = newNode;
+    };
+
+    return {
+        getList,
+        append,
+        prepend
+    };
 }
 
 // Create a node
@@ -32,3 +41,11 @@ function Node(value = null, nextNode = null) {
         nextNode
     };
 }
+
+const list = LinkedList();
+list.append('Dog');
+list.append('Cat');
+list.append('Duck');
+list.prepend('Chicken');
+list.prepend('Horse');
+console.log(list.getList());
