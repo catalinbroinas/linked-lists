@@ -1,9 +1,12 @@
-// Full list
+// Create a linked list
 function LinkedList() {
 
 }
 
-// A node from list
+// Create a node
 function Node(value = null, nextNode = null) {
-
+    return {
+        value,
+        nextNode
+    };
 }
