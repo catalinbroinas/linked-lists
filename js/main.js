@@ -56,13 +56,30 @@ function LinkedList() {
     // Get the first node in the list
     const head = () => list.head ? list.head.value : null;
 
+    // Get the last node in the list
+    const tail = () => {
+        let current = list.head;
+
+        // Check if the list is empty
+        if (current === null) {
+            return null;
+        }
+
+        while (current.nextNode !== null) {
+            current = current.nextNode;
+        }
+
+        return current.value;
+    };
+
     return {
         getList,
         toArray,
         append,
         prepend,
         size,
-        head
+        head,
+        tail
     };
 }
 
@@ -97,3 +114,7 @@ console.log(`Size list is ${sizeMyList}`);
 // Print the fist node of the list
 const firstNode = myList.head();
 console.log(`First node is ${firstNode}`);
+
+// Print the last node of the list
+const lastNode = myList.tail();
+console.log(`Last node is ${lastNode}`);
