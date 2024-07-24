@@ -188,6 +188,52 @@ function LinkedList() {
         return result + 'null';
     };
 
+    // Add the specified value to the specified index
+    const insertAt = (value, index) => {
+        index = parseInt(index);
+
+        // Check if index is invalid
+        if (!Number.isInteger(index) || index < 0) {
+            return 'Invalid index';
+        }
+
+        // Handle empty list
+        if (empty()) {
+            // Insert node at the beginning of the list
+            if (index === 0) {
+                prepend(value);
+            } else {
+                return 'Index out of bounds.';
+            }
+            return true;
+        }
+
+        // Handle insertion at the beginning
+        if (index === 0) {
+            // Insert node at the beginning of the list
+            prepend(value);
+            return true;
+        }
+
+        let current = list.head;
+        let currentIndex = 0;
+
+        // Traverse the list to find the insertion point
+        while (current !== null) {
+            if (currentIndex === index - 1) {
+                // Insert new node at the specified index
+                const newNode = CreateNode(value, current.nextNode);
+                current.nextNode = newNode;
+                return true;
+            }
+            current = current.nextNode;
+            currentIndex += 1;
+        }
+
+        // Index is out of bounds
+        return 'Index out of bounds.';
+    };
+
     return {
         getList,
         toArray,
@@ -200,7 +246,8 @@ function LinkedList() {
         pop,
         contains,
         find,
-        toString
+        toString,
+        insertAt
     };
 }
 
@@ -258,3 +305,9 @@ console.log(myList.find(item));
 
 // Convert list to string and print
 console.log(myList.toString());
+
+// Insert node to specified index and print list
+myList.insertAt('Lyon', 0);
+myList.insertAt('Elephant', 3);
+myList.insertAt('Tigre', 6);
+console.log(myList.toArray());
