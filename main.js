@@ -16,6 +16,7 @@ function LinkedList() {
         const results = [];
         let current = list.head;
 
+        // Traverse the list and add each item to the array
         while (current !== null) {
             results.push(current.value);
             current = current.nextNode;
@@ -28,15 +29,17 @@ function LinkedList() {
     const append = (value) => {
         const newNode = CreateNode(value);
 
+        // If the list is empty, add the new node to the head
         if (list.head === null) {
             list.head = newNode;
         } else {
+            // Traverse the list to find the last node
             let current = list.head;
-
             while (current.nextNode !== null) {
                 current = current.nextNode;
             }
 
+            // Add the new node at the end of the list
             current.nextNode = newNode;
         }
     };
@@ -52,6 +55,7 @@ function LinkedList() {
         let current = list.head;
         let size = 0;
 
+        // Traverse the list and count each node
         while (current !== null) {
             size += 1;
             current = current.nextNode;
@@ -65,13 +69,12 @@ function LinkedList() {
 
     // Get the last node in the list
     const tail = () => {
-        let current = list.head;
-
-        // Check if the list is empty
-        if (current === null) {
-            return null;
+        if (empty()) {
+            return 'Empty list!';
         }
 
+        // Traverse the list to find the last node
+        let current = list.head;
         while (current.nextNode !== null) {
             current = current.nextNode;
         }
@@ -79,10 +82,10 @@ function LinkedList() {
         return current.value;
     };
 
+    // Get the value of the node at a specific index
     const at = (index) => {
-        // Check if the list is empty
-        if (list.head === null) {
-            return null;
+        if (empty()) {
+            return 'Empty list!';
         }
 
         // Check if index is invalid
@@ -93,6 +96,7 @@ function LinkedList() {
         let current = list.head;
         let currentIndex = 0;
 
+        // Traverse the list and return the value at the given index
         while (current !== null) {
             if (currentIndex === index) {
                 return current.value;
