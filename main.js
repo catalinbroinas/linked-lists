@@ -150,6 +150,30 @@ function LinkedList() {
         return false;
     };
 
+    // Get the index of the node with a specific value
+    const find = (value) => {
+        if (empty()) {
+            return 'Empty list!';
+        }
+
+        let current = list.head;
+        let currentIndex = 0;
+
+        // Traverse the list to find the value
+        while (current !== null) {
+            // Compare values for equality
+            if (current.value === value) {
+                // Return the index if the value
+                return currentIndex;
+            }
+            current = current.nextNode;
+            currentIndex += 1;
+        }
+
+        // Return null if the value is not found
+        return null;
+    };
+
     return {
         getList,
         toArray,
@@ -160,7 +184,8 @@ function LinkedList() {
         tail,
         at,
         pop,
-        contains
+        contains,
+        find
     };
 }
 
@@ -211,3 +236,7 @@ console.log(myList.toArray());
 // Check if the item exists in the list
 const findItem = 'Dog';
 console.log(myList.contains(findItem));
+
+// Get the index of the item
+const item = 'Cat';
+console.log(myList.find(item));
