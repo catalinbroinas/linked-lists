@@ -8,6 +8,9 @@ function LinkedList() {
     // Get the entire list
     const getList = () => list;
 
+    // Check if the list is empty
+    const empty = () => (list.head === null) ? true : false;
+
     // Convert the linked list to an array for easy display
     const toArray = () => {
         const results = [];
@@ -102,6 +105,28 @@ function LinkedList() {
         return 'Invalid index';
     };
 
+    // Removes the last element from the list
+    const pop = () => {
+        if (empty()) {
+            return 'Empty list!';
+        }
+
+        // Check if there is only one element in the list
+        if (list.head.nextNode === null) {
+            list.head = null;
+            return;
+        }
+
+        // Traverse the list to find the second to last node
+        let current = list.head;
+        while (current.nextNode.nextNode !== null) {
+            current = current.nextNode;
+        }
+
+        // Remove the last node
+        current.nextNode = null;
+    };
+
     return {
         getList,
         toArray,
@@ -110,7 +135,8 @@ function LinkedList() {
         size,
         head,
         tail,
-        at
+        at,
+        pop
     };
 }
 
@@ -153,3 +179,7 @@ console.log(`Last node is ${lastNode}`);
 // Get the node by index
 const index = 2;
 console.log(myList.at(index));
+
+// Remove the last node and print list
+myList.pop();
+console.log(myList.toArray());
