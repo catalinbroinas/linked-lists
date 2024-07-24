@@ -174,6 +174,20 @@ function LinkedList() {
         return null;
     };
 
+    // Convert the linked list to string
+    const toString = () => {
+        let current = list.head;
+        let result = '';
+
+        // Traverse the list and add each node to result
+        while (current !== null) {
+            result += `( ${current.value} ) -> `;
+            current = current.nextNode;
+        }
+
+        return result + 'null';
+    };
+
     return {
         getList,
         toArray,
@@ -185,7 +199,8 @@ function LinkedList() {
         at,
         pop,
         contains,
-        find
+        find,
+        toString
     };
 }
 
@@ -240,3 +255,6 @@ console.log(myList.contains(findItem));
 // Get the index of the item
 const item = 'Cat';
 console.log(myList.find(item));
+
+// Convert list to string and print
+console.log(myList.toString());
