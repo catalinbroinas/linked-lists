@@ -76,6 +76,32 @@ function LinkedList() {
         return current.value;
     };
 
+    const at = (index) => {
+        // Check if the list is empty
+        if (list.head === null) {
+            return null;
+        }
+
+        // Check if index is invalid
+        if (!Number.isInteger(index) || index < 0) {
+            return 'Invalid index';
+        }
+
+        let current = list.head;
+        let currentIndex = 0;
+
+        while (current !== null) {
+            if (currentIndex === index) {
+                return current.value;
+            }
+
+            current = current.nextNode;
+            currentIndex += 1;
+        }
+
+        return 'Invalid index';
+    };
+
     return {
         getList,
         toArray,
@@ -83,7 +109,8 @@ function LinkedList() {
         prepend,
         size,
         head,
-        tail
+        tail,
+        at
     };
 }
 
@@ -122,3 +149,7 @@ console.log(`First node is ${firstNode}`);
 // Print the last node of the list
 const lastNode = myList.tail();
 console.log(`Last node is ${lastNode}`);
+
+// Get the node by index
+const index = 2;
+console.log(myList.at(index));
