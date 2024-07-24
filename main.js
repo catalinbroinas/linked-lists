@@ -23,7 +23,7 @@ function LinkedList() {
 
     // Append a new node at the end of the list
     const append = (value) => {
-        const newNode = Node(value);
+        const newNode = CreateNode(value);
 
         if (list.head === null) {
             list.head = newNode;
@@ -40,7 +40,7 @@ function LinkedList() {
 
     // Prepend a new node at the beginning of the list
     const prepend = (value) => {
-        const newNode = Node(value, list.head);
+        const newNode = CreateNode(value, list.head);
         list.head = newNode;
     };
 
@@ -88,7 +88,7 @@ function LinkedList() {
 }
 
 // Create a node
-function Node(value = null, nextNode = null) {
+function CreateNode(value = null, nextNode = null) {
     return {
         value,
         nextNode
