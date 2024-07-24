@@ -131,6 +131,25 @@ function LinkedList() {
         current.nextNode = null;
     };
 
+    // Check if the item exists in the list
+    const contains = (value) => {
+        if (empty()) {
+            return 'Empty list!';
+        }
+
+        // Traverse the list to find the item
+        let current = list.head;
+        while (current !== null) {
+
+            if (current.value === value) {
+                return true;
+            }
+            current = current.nextNode;
+        }
+
+        return false;
+    };
+
     return {
         getList,
         toArray,
@@ -140,7 +159,8 @@ function LinkedList() {
         head,
         tail,
         at,
-        pop
+        pop,
+        contains
     };
 }
 
@@ -187,3 +207,7 @@ console.log(myList.at(index));
 // Remove the last node and print list
 myList.pop();
 console.log(myList.toArray());
+
+// Check if the item exists in the list
+const findItem = 'Dog';
+console.log(myList.contains(findItem));
