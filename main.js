@@ -234,6 +234,53 @@ function LinkedList() {
         return 'Index out of bounds.';
     };
 
+    // Remove a specified node at a given index
+    const removeAt = (index) => {
+        if (empty()) {
+            return 'Empty list.';
+        }
+
+        index = parseInt(index);
+
+        // Check if index is invalid
+        if (!Number.isInteger(index) || index < 0) {
+            return 'Invalid index.';
+        }
+
+        // Check if the list contains only one element
+        if (list.head.nextNode === null) {
+            list.head = null;
+            return true;
+        }
+
+        let current = list.head;
+
+        // Remove the first node
+        if (index === 0) {
+            list.head = current.nextNode;
+            return true;
+        }
+
+        let previous = null;
+        let currentIndex = 0;
+
+        // Traverse the list to find the node to remove
+        while (current !== null) {
+            if (currentIndex === index) {
+                if (previous !== null) {
+                    previous.nextNode = current.nextNode;
+                }
+                return true;
+            }
+            previous = current;
+            current = current.nextNode;
+            currentIndex += 1;
+        }
+
+        // Index is out of bounds
+        return 'Index out of bounds.';
+    };
+
     return {
         getList,
         toArray,
@@ -247,7 +294,8 @@ function LinkedList() {
         contains,
         find,
         toString,
-        insertAt
+        insertAt,
+        removeAt
     };
 }
 
@@ -310,4 +358,8 @@ console.log(myList.toString());
 myList.insertAt('Lyon', 0);
 myList.insertAt('Elephant', 3);
 myList.insertAt('Tigre', 6);
+console.log(myList.toArray());
+
+// Remove a specific node by index and print list
+myList.removeAt(2);
 console.log(myList.toArray());
