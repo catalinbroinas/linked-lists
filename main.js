@@ -56,3 +56,15 @@ console.log(myList.toArray());
 // Remove a specific node by index and print list
 myList.removeAt(2);
 console.log(myList.toArray());
+
+// Odin example
+const odinList = LinkedList();
+
+odinList.append("dog");
+odinList.append("cat");
+odinList.append("parrot");
+odinList.append("hamster");
+odinList.append("snake");
+odinList.append("turtle");
+
+console.log(odinList.toString());
